@@ -1,4 +1,6 @@
-FROM ubuntu:22.04
+###############################################
+
+FROM ubuntu:22.04 as builder
 
 RUN apt update -y
 RUN apt install -y build-essential curl git protobuf-compiler clang lld
@@ -22,7 +24,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-COPY patches /
+COPY patches /patches 
 COPY influxdb_iox /influxdb_iox
 
 WORKDIR /influxdb_iox
@@ -32,8 +34,18 @@ RUN patch -u ./.cargo/config -i /patches/cpu-arch.patch
 ARG COMMIT_HASH
 ENV VERSION_HASH="$COMMIT_HASH"
 
-# RUN cargo build \
-#   --package="influxdb_iox" \
-#   --profile="release" \
-#   --no-default-features \
-#   --features="aws,gcp,azure,jemalloc_replacing_malloc"
+RUN cargo build \
+  --package="influxdb_iox" \
+  --profile="release" \
+  --no-default-features \
+  --features="aws,gcp,azure,jemalloc_replacing_malloc"
+
+RUN strip ./target/release/influxdb_iox
+
+###############################################
+
+FROM ubuntu:22.04
+
+COPY --from=builder /influxdb_iox/target/release/influxdb_iox /bin/influxdb_iox
+
+CMD ["influxdb_iox"]
