@@ -1,8 +1,6 @@
-diff --git a/.cargo/config b/.cargo/config
-index a16ed45ce..e94744d9a 100644
---- a/.cargo/config
-+++ b/.cargo/config
-@@ -19,7 +19,7 @@ rustflags = [
+--- ./.cargo/config	2023-08-17 13:32:23
++++ ./.cargo/config-2	2023-08-17 14:49:45
+@@ -19,7 +19,7 @@
      # Also see https://bugs.chromium.org/p/chromium/issues/detail?id=919499#c16
      "-C", "link-arg=-Wl,--no-rosegment",
      # Enable all features supported by CPUs more recent than haswell (2013)

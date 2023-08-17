@@ -27,7 +27,7 @@ COPY influxdb_iox /influxdb_iox
 
 WORKDIR /influxdb_iox
 
-RUN git apply /patches/cpu-arch.patch
+RUN patch -u ./.cargo/config -i /patches/cpu-arch.patch
 
 ARG COMMIT_HASH
 ENV VERSION_HASH="$COMMIT_HASH"
