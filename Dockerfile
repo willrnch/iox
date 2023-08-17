@@ -16,7 +16,7 @@ ENV CARGO_NET_GIT_FETCH_WITH_CLI="true"
 
 # Building job will be killed in docker for using to much ram.
 # By using only one job, we limit the ram usage.
-ENV CARGO_BUILD_JOBS="1"
+# ENV CARGO_BUILD_JOBS="1"
 
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
@@ -24,7 +24,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-COPY patches /patches 
+COPY patches /patches
 COPY influxdb_iox /influxdb_iox
 
 WORKDIR /influxdb_iox
@@ -35,10 +35,10 @@ ARG COMMIT_HASH
 ENV VERSION_HASH="$COMMIT_HASH"
 
 RUN cargo build \
-  --package="influxdb_iox" \
-  --profile="release" \
-  --no-default-features \
-  --features="aws,gcp,azure,jemalloc_replacing_malloc"
+      --package="influxdb_iox" \
+      --profile="release" \
+      --no-default-features \
+      --features="aws,gcp,azure,jemalloc_replacing_malloc"
 
 RUN strip ./target/release/influxdb_iox
 
