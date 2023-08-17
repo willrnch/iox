@@ -1,0 +1,3 @@
+[submodule "influxdb_iox"]
+	path = influxdb_iox
+	url = https://github.com/influxdata/influxdb_iox.git
