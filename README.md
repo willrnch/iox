@@ -4,7 +4,7 @@ It contains images for `linux/arm64` and `linux/amd64` (with and without AVX2 su
 
 ## Images
 
-### Aug 17, 2023 - [3612b1](https://github.com/influxdata/influxdb_iox/commit/3612b1c48234c74b33865a62a864b07c014b9ba6)
+### Aug 17, 2023 - [3612b1c](https://github.com/influxdata/influxdb_iox/commit/3612b1c48234c74b33865a62a864b07c014b9ba6)
 
 | Tag                                                                  | Platform                    |
 |----------------------------------------------------------------------|-----------------------------|
