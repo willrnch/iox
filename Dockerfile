@@ -24,12 +24,9 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-COPY patches /patches
 COPY influxdb_iox /influxdb_iox
 
 WORKDIR /influxdb_iox
-
-RUN patch -u ./.cargo/config -i /patches/cpu-arch.patch
 
 ARG COMMIT_HASH
 ENV VERSION_HASH="$COMMIT_HASH"
