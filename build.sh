@@ -5,7 +5,7 @@ set -ex
 git submodule update --init --recursive
 
 cd influxdb_iox
-COMMIT_HASH="$(git describe --always --dirty --abbrev=64)"
+COMMIT_HASH="$(git describe --always --abbrev=64)"
 cd ..
 
 IMAGE_TAG="ghcr.io/willrnch/iox:$COMMIT_HASH"
