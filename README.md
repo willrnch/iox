@@ -4,6 +4,12 @@ It contains images for `linux/arm64` and `linux/amd64` (with and without AVX sup
 
 ## Images
 
+### Aug 22, 2023 - [c020ec3](https://github.com/influxdata/influxdb_iox/commit/c020ec38133e5abd62c0dee1c9a6fdb254fd5fbe)
+
+| Tag                                                                       | Platform       |
+|---------------------------------------------------------------------------|----------------|
+| `ghcr.io/willrnch/iox:c020ec38133e5abd62c0dee1c9a6fdb254fd5fbe-ivybridge` | `linux/amd64`  |
+
 ### Aug 21, 2023 - [fbb2460](https://github.com/influxdata/influxdb_iox/commit/fbb2460c84f8620b2e980367d897cac658163aff)
 | Tag                                                                       | Platform       |
 |---------------------------------------------------------------------------|----------------|
